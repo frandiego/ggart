@@ -1,5 +1,6 @@
 export("polar_clock")
 export("joy_division")
+export("hyperparaboloid_grid")
 
 import(ggplot2)
 import(purrr)
