@@ -1,5 +1,4 @@
-
-
+# joy_division.R
 joy_division <- function(n=50,seed = 1234){
 
   phi <- (1+sqrt(5))/2

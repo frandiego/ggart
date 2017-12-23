@@ -14,5 +14,6 @@ Imports:
   purrr (>= 0.2.4),
   magrittr (>= 1.5),
   dplyr (>= 0.2.4),
-  broom (>= 0.4.3)
+  broom (>= 0.4.3),
+  reshape2 (>= 1.4.3)
   
