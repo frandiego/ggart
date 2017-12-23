@@ -1,3 +1,8 @@
 export("polar_clock")
+export("joy_division")
+
 import(ggplot2)
 import(purrr)
+import(magrittr)
+import(dplyr)
+import(broom)
