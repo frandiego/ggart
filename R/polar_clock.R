@@ -5,7 +5,7 @@ polar_clock <- function(n=4){
   data <- data.frame(
     x = seq(n+1),
     y = v[-(n+2)],
-    fill=  c(rep(0,2),rep(1,n-1))
+    fill=  c(c(0,1),rep(2,n-1))
   )
 
   ggplot(data,aes(x,y,fill=factor(fill))) +
@@ -14,7 +14,7 @@ polar_clock <- function(n=4){
     ylim(c(0,max(v[-(n+2)])/2*3)) +
     theme(legend.position="none")+
     coord_polar(theta='y')+
-    scale_fill_manual(values=c('red','black'))
+    scale_fill_manual(values=c('white','red','black'))
 }
 
 
