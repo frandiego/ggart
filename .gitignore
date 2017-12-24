@@ -5,3 +5,6 @@
 # RStudio files
 .Rproj.user/
 .Ruserdata
+.Rproj.user
+# development folder
+dev

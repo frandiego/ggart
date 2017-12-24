@@ -1,5 +1,6 @@
 # hyperparaboloid_grid.R
 hyperparaboloid_grid <- function(n=80){
+  phi <- (1+sqrt(5))/2
   m <- matrix(NA,n,n)
   ax <- seq(-1,1,2/(n-1))
   for (i in seq(n)){
