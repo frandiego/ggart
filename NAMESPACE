@@ -1,6 +1,7 @@
 export("polar_clock")
 export("joy_division")
 export("hyperparaboloid_grid")
+export("calendar")
 
 import(ggplot2)
 import(purrr)
@@ -8,3 +9,4 @@ import(magrittr)
 import(dplyr)
 import(broom)
 import(reshape2)
+import(data.table)
