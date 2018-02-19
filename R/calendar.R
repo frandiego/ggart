@@ -1,5 +1,5 @@
 # calendar.R
-calendar <- function(year){
+calendar <- function(year,n_columns = 4){
   data.table(date=seq.Date(as.Date(paste0(year,'-01-01')),
                            as.Date(paste0(year,'-12-31')),1)) %>%
     .[,c('month','day','week','wday') :=
@@ -14,12 +14,13 @@ calendar <- function(year){
   ggplot(dt,aes(x=factor(wday),y=factor(-week),color=factor(color))) +
     geom_text(aes(label = day)) +
     facet_wrap(~month,scales = 'free',
-               labeller = labeller(month = month.name),nrow = 3) +
+               labeller = labeller(month = month.name),ncol =  n_columns) +
     scale_color_manual(values = c('red','black')) +
     ggtitle(year)+
     theme(axis.title = element_blank(), axis.ticks = element_blank(),
           axis.text = element_blank(), panel.background = element_blank(),
           legend.position = 'none',
-          plot.title = element_text(hjust = 0.5))
+          plot.title = element_text(hjust = 0.5),
+          text = element_text(size = 12))
 }
 

@@ -16,6 +16,6 @@ Imports:
   dplyr (>= 0.2.4),
   broom (>= 0.4.3),
   reshape2 (>= 1.4.3),
-  data.table (>= 3.0.0),
+  data.table (>= 1.10.0),
   lubridate (>=  1.7.2)
   
