@@ -2,6 +2,8 @@ export("polar_clock")
 export("joy_division")
 export("hyperparaboloid_grid")
 export("calendar")
+export("ascension_of_gauss")
+
 
 import(ggplot2)
 import(purrr)
