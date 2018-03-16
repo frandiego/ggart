@@ -1,5 +1,5 @@
 # joy_division.R
-joy_division <- function(n=50,seed = 1234){
+joy_division <- function(n=50,red_n=22,seed = 1234){
 
   phi <- (1+sqrt(5))/2
 
@@ -26,7 +26,7 @@ joy_division <- function(n=50,seed = 1234){
     group_by(Group, GroupNum) %>%
     do(data.frame(approx(.$x, .$ymax, xout = seq(min(dt$x), max(dt$x), length.out = 200)))) %>%
     mutate(y = ifelse(is.na(y), dt$ymin[dt$Group == Group][1], y),
-           ymin = dt$ymin[j3$Group == Group][1],
+           ymin = dt$ymin[dt$Group == Group][1],
            ymaxN = y + rnorm(n(), 0.001, 0.001)) %>%
     arrange(x) %>%
     mutate(ymaxN = ifelse(row_number() %in% c(1, n()), ymin + min(ymaxN - ymin), ymaxN)) -> dt
@@ -34,8 +34,9 @@ joy_division <- function(n=50,seed = 1234){
   dt$ymaxS <- smooth(dt$ymaxN, kind = "S", endrule = "copy", do.ends = FALSE)
 
   p <- ggplot()
-  iterable <- rev(unique(j4$GroupNum))
-  red_i <- 22
+  iterable <- rev(unique(dt$GroupNum))
+  red_i <- red_n
+  #red_i <- 22
   for (j in seq_along(iterable)) {
     i = iterable[j]
     fill = ifelse(j == red_i,'red','black')
@@ -45,7 +46,7 @@ joy_division <- function(n=50,seed = 1234){
                              ymax = ymaxS, group = GroupNum),
                          colour = col,
                          fill = fill) +
-      geom_hline(yintercept = dt$ymin[j4$GroupNum == i][1] + min(dt$ymaxN - dt$ymin), colour = "#000000")
+      geom_hline(yintercept = dt$ymin[dt$GroupNum == i][1] + min(dt$ymaxN - dt$ymin), colour = "#000000")
   }
   p +
     coord_fixed(13) +
