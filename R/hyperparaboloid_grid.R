@@ -16,8 +16,8 @@ hyperparaboloid_grid <- function(n=80){
   red_i <- round(n/phi)
   colnames(mm) <- c('r','c','value','color')
   mm[mm$r == paste0('r',red_i) & mm$c == paste0('c',red_j), 'color' ] <- 1
-  ggplot(mm,aes(r,c)) +
-    geom_point(aes(size=jitter(value**3,amount =1),color=factor(color)))+
+  ggplot(mm) +
+    geom_point(aes(r,c,size=jitter(value**3,amount =1),color=factor(color)),inherit.aes = F)+
     scale_color_manual(values=c('black','red'))+
     theme_void()+
     theme(legend.position="none")+

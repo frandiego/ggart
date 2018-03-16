@@ -21,6 +21,8 @@ calendar <- function(year,n_columns = 4){
           axis.text = element_blank(), panel.background = element_blank(),
           legend.position = 'none',
           plot.title = element_text(hjust = 0.5),
-          text = element_text(size = 12))
+          text = element_text(size = 12),
+          strip.background  = element_blank(),
+          strip.text = element_text(hjust = 0.5,face = 'bold'))
 }
 
