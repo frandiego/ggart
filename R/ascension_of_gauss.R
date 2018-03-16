@@ -1,4 +1,4 @@
-ascension_of_gauss <- function(n){
+ascension_of_gauss <- function(n=14){
   nhalf <- ceiling(n/2)
 
   phi <- (1+sqrt(5))/2
