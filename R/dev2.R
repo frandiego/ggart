@@ -67,4 +67,16 @@ lines_last_full <- paste0(lines_last[[1]],collapse =' ')
 last_white <- rep(' ',to_add_last) %>% paste0(.,collapse = '')
 lines_last_full <- paste0(lines_last_full,last_white)
 lines_check_full[[length(lines_check_full)+1]] <- lines_last_full
+full_text <- paste0(lines_check_full,collapse = '\n')
+
+
+# change font
+ggdata <- data.table(text= full_text)
+
+ggplot(ggdata,aes('',''))+
+  geom_text(aes(label=text),size=0.25)+
+  theme_minimal()+
+  theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
+        text = element_text()) -> gg
 
