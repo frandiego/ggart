@@ -25,10 +25,8 @@ text_full_list <- map(text_full_list,~paste0(.,collapse = ''))
 text_full_list <- map(text_full_list,~paste(.,'\n'))
 text_full_paste <- reduce(text_full_list,paste)
 text_df <- data.table(text = text_full_paste)
-text_full_list %>% length()
 
 
-install.packages('gdtools',dependencies = T)
 
 
 
