@@ -10,25 +10,47 @@ guess_encoding <- function(text_list,n=1){
 }
 
 
-x = 'convencional'
-add_spaces <- function(x,width,fill) {
-  nspace <- length(x)-1L
-  extra <- width - sum(nchar(x)) - nspace
-  reps <- extra %/% nspace
-  extra <- extra %% nspace
-  times <- rep.int(if (reps>0) reps+1L else 1L, nspace)
-  if(is.nan(extra)){
-    extra = 0
+
+
+
+add_spaces <- function(x,width){
+  #goal_ <<- goal_ +1
+  #print(goal_)
+  nchar_ <- nchar(x)
+  add_   <- width - nchar_
+  words_ <- strsplit(x,' ') %>% unlist()
+  idx_   <- seq_along(words_)
+  nwords_ <- length(words_)
+  if(add_<nwords_){
+    idx_add<- sample(x = idx_,size = add_,replace = F)
+    rep_ <- paste0(words_[idx_add],' ')
+    words_[idx_add] <- rep_
+    x_ <- paste0(words_,collapse = ' ')
+    return(x_)
+  }else{
+    return(add_spaces(x = gsub(' ','  ',x),width = width))
   }
-  if (extra > 0) {
-    if (fill=='right') times[1:extra] <- times[1:extra]+1L
-    else if (fill=='left')
-      times[(nspace-extra+1L):nspace] <- times[(nspace-extra+1L):nspace]+1L
-    else times[inds] <- times[(inds <- sample(nspace, extra))]+1L
-  }
-  spaces <- c('', unlist(lapply(times, formatC, x=' ', digits=NULL)))
-  return(paste(c(rbind(spaces, x)), collapse=''))
 }
+
+add_spaces_list <- function(l,width){
+  l_ <- head(l,-1L)
+  u_ <- tail(l,1)
+  l_c <- map(l_,~add_spaces(x=.,width = width))
+  add_ <- width - nchar(u_)
+  rep(' ',add_) %>% paste0(collapse = '') %>% paste0(u_,.)-> u_c
+  l_c[length(l_c)+1] <- u_c
+  return(l_c)
+}
+
+
+env_var <- function(var,envir = .GlobalEnv){
+  ls_ <- ls(envir = envir)
+  eval(parse(text=ls_[ls_==var]))
+}
+
+
+
+
 
 add_random_spacewidths <- function(str,add){
   idx <- seq_along(str)
