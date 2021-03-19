@@ -17,7 +17,6 @@ Imports:
   broom (>= 0.4.3),
   reshape2 (>= 1.4.3),
   data.table (>= 1.10.0),
-  lubridate (>=  1.7.2),
-  extrafont (>= 0.17),
-  pdftools (>= 1.8) 
+  lubridate (>=  1.7.2)
+
   

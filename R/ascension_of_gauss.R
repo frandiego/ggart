@@ -1,6 +1,5 @@
 ascension_of_gauss <- function(n=14){
   nhalf <- ceiling(n/2)
-
   phi <- (1+sqrt(5))/2
   x=seq(-100,100,length=10000)
   dt <- as.data.table(map(seq(3,nhalf*phi,1/phi),~dnorm(x,mean=0,sd=.)))

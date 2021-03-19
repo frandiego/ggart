@@ -15,4 +15,3 @@ polar_clock <- function(n=4){
     scale_fill_manual(values=c('white','red','black'))
 }
 
-
